@@ -10,9 +10,9 @@ import NotFound from "./pages/Not Found/NotFound";
 import SingleProduct from "./components/Product/SingleProduct";
 import Layout from "./layouts/Layout";
 import Products from "./layouts/Products/Products";
-import Regimeplansection from "./layouts/regimeplan/regimeplan";
 import PersonnalTraining from "./layouts/PersonnalTraining/PersonnalTraining";
 import DashProductsLayout from "./pages/Dashboard/DashProductsLayout/DashProductsLayout";
+import GymPlanDashboard from './layouts/GymPlans/GymPlanDashboard'
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
             path="dashServices"
             element={
               <>
-                <PersonnalTraining isOnDashboard /> <Regimeplansection isOnDashboard />
+                <PersonnalTraining isOnDashboard /> <GymPlanDashboard isOnDashboard/>
               </>
             }
           />
