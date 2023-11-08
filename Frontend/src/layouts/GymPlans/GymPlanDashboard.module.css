@@ -71,7 +71,64 @@ table tbody tr td {
 }
  
  
- 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 30%;
+  background-color: #f0f0f0; 
+  margin-left: 25rem;
+  margin-top: 2rem;
+}
+.content{
+  text-align: center;
+  color: black;
+  
+}
+.elements {
+  margin-bottom: 16px;
+}
+.element{
+  margin-bottom: 24px;
+}
+.myButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #010101; /* Green color for success */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .my-button:hover {
+    background-color: #218838; /* Darker green for hover effect */
+  }
+.backButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color for primary */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 15px;
+
+}
+
+.backButton:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+}
+
+
+
+
  /* .container {
     display: flex;
     flex-direction: column;
