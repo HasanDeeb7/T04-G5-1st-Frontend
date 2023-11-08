@@ -58,8 +58,10 @@
   font-size: 1em;
   width: fit-content;
   border: 1px solid white;
+  border-radius: 5px;
+  text-align: center;
   padding: 5px;
-  width: 30px;
+  width: 35px;
   background-color: transparent;
   color: white;
 }
@@ -78,6 +80,7 @@
   border: none;
   color: white;
 }
+
 
 .buttonsWrapper {
   display: flex;
