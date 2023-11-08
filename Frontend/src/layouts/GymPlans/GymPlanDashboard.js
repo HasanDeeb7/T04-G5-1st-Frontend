@@ -1,32 +1,72 @@
-// import style from "../../components/Plans/GymPlan.module.css";
+
 import GymPlan from "../../components/Plans/GymPlan";
 import React, { useState, useEffect } from "react";
 import { fetchGymPlans } from "../../db/gymPlansData";
-import style from "../../layouts/GymPlans/GymPlanDashboard.module.css";
+import style from "../../layouts/GymPlans/GymPlanDashboard.module.css"; 
+import axios from "axios";
 
-
-
-
-
-const GymPlanDashboard = () => {
-  const [loading, setLoading] = useState(true);
-  const [plans, setplans] = useState([]);
+function GymPlanDashboard(){
+  const [plans, setPlans] = useState([]);
   const [showForm,setShowForm] = useState(false);
-  const [values , setValues] = useState([])
-  console.log("Fetched Plans:", plans);
+  const [newTitle ,setNewTitle] = useState('')
+  const [newPrice , setNewPrice] = useState('')
+  const[newFeature , setNewFeature] = useState('')
+  const[isLoading , setIsLoading] = useState(true)
 
+const CreateGym = async () => {
+  const formData = new FormData();
+  formData.append("title" ,newTitle);
+  formData.append("price" ,newPrice);
+  formData.append("feature" ,newFeature);
+  try{
+    const response = await axios.post(`${process.env.REACT_APP_PATH}gymPlan/add` , formData,{
+      headers:{
+        'Content-Type' : "added"
+      },
+      
+    });
+    if (response.data.message === "Gym plan added"){
+    setPlans((prevPlans)=> [...prevPlans , response.data.data]);
+    setNewTitle("");
+    setNewPrice("");
+    setNewFeature("");
+    }
+    else{
+      console.error(response.data.message)
+      alert("Failed to add gym Plan");
+    }
+    
+  }catch(error){
+    console.error('Failed to add gym Plan' ,error);
+  }
+  
+};
 
+useEffect(()=>{
+  async function fetchData(){ 
+    try{
+      const response = await fetchGymPlans();
+      console.log('Fetched data' , response.data.data) 
+      if (response){
+        setPlans(response.data.data);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+fetchData();
+    },[]);
   async function fetchData() {
     try {
       const response = await fetchGymPlans();
       if (response) {
-        console.log(response);
-        setplans(response.data);
-        setLoading(false);
+        // console.log(response);
+        setPlans(response.data.data);
+        // setIsLoading(false);
       }
     } catch (error) {
       console.error(error);
-      setLoading(false);
+      // setIsLoading(false);
     }
   }
 
@@ -52,7 +92,7 @@ const GymPlanDashboard = () => {
             </tr>
           </thead>
           <tbody className={style.tableContent}>
-            {
+            {isLoading ? <p>Loading....</p>:
               plans.map((plan, key) => (
               <tr key={key}>
                 <td>{plan._id}</td>
@@ -74,18 +114,17 @@ const GymPlanDashboard = () => {
         <form>
           <div className={style.elements}>
           <label htmlFor="title">Title:</label>
-          <input type="text" title='title' className='formcontrol' placeholder="Enter a title" onChange={e => setValues({...values, title: e.target.value})}></input>
+          <input type="text" title='title' className='formcontrol' placeholder="Enter a title" onChange={(e) => setNewTitle(e.target.value)}></input>
         </div>
         <div className={style.elements}>
         <label htmlFor="price">Price:</label>
-          <input type="number" price='price' className='formcontrol' placeholder="Enter a price" onChange={e => setValues({...values, price: e.target.value})}></input>
+          <input type="number" price='price' className='formcontrol' placeholder="Enter a price" onChange={(e) => setNewPrice(e.target.value)}></input>
         </div>
         <div className={style.element}> 
         <label htmlFor="feature">Feature:</label>
-          <input type="text" feature='feature' className='formcontrol' placeholder="Enter a feature" onChange={e => setValues({...values, feature: e.target.value})}></input>
+          <input type="text" feature='feature' className='formcontrol' placeholder="Enter a feature" onChange={(e) => setNewFeature(e.target.value)}></input>
         </div>
-        <button className={style.myButton}>Submit</button>
-        {/* <Link to ="/" className={style.backButton}>Back</Link> */}
+        <button className={style.myButton} onClick={CreateGym}>Add</button>
       </form>
     </div>
   </div>

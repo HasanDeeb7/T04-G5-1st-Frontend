@@ -12,6 +12,7 @@ import Layout from "./layouts/Layout";
 import PersonnalTraining from "./layouts/PersonnalTraining/PersonnalTraining";
 import Regimedash from './layouts/regimedash/regimedash'
 import DashProductsLayout from "./pages/Dashboard/DashProductsLayout/DashProductsLayout";
+import  GymPlanDashboard from "./layouts/GymPlans/GymPlanDashboard"
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
             path="dashServices"
             element={
               <>
-                <PersonnalTraining isOnDashboard /><Regimedash isOnDashboard/>
+                <PersonnalTraining isOnDashboard /><Regimedash isOnDashboard/><GymPlanDashboard isOnDashboard/>
               </>
             }
           />
