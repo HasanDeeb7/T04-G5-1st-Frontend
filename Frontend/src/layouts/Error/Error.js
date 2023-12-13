@@ -1,10 +1,17 @@
+// Importing necessary dependencies and styles
 import React from 'react'
 import style from './Error.module.css'
+
+// Functional component representing an error message
 function Error(props) {
-    const {message} = props
+  // Destructuring the 'message' prop from the props object
+  const { message } = props;
+
+  // Rendering the error message inside a styled wrapper
   return (
     <div className={style.errorWrapper}>{message}</div>
-  )
+  );
 }
 
-export default Error
+// Exporting the Error component
+export default Error;

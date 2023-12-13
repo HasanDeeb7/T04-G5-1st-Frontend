@@ -5,12 +5,18 @@ import icon2 from '../../assets/icons/icon2.svg';
 import icon3 from '../../assets/icons/icon3.svg';
 import icon4 from '../../assets/icons/icon4.svg';
 
+// ReasonsToJoin Component
 const ReasonsToJoin = () => {
     return (
         <div className={styles.container}>
+            {/* Title section */}
             <h2 className={styles.title}>Reasons to Join</h2>
+
+            {/* Columns section */}
             <div className={styles.columns}>
+                {/* First column */}
                 <div className={styles.column}>
+                    {/* First reason */}
                     <div className={styles.reason}>
                         <img src={icon3} alt="Ruler Icon" className={styles.icon} />
                         <div className={styles.text}>
@@ -18,6 +24,8 @@ const ReasonsToJoin = () => {
                             <p>A spacious gym for sports – a safe distance between exercise machines</p>
                         </div>
                     </div>
+
+                    {/* Second reason */}
                     <div className={styles.reason}>
                         <img src={icon1} alt="Ruler Icon" className={styles.icon} />
                         <div className={styles.text}>
@@ -26,7 +34,10 @@ const ReasonsToJoin = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Second column */}
                 <div className={styles.column}>
+                    {/* Third reason */}
                     <div className={styles.reason}>
                         <img src={icon4} alt="Ruler Icon" className={styles.icon} />
                         <div className={styles.text}>
@@ -34,6 +45,8 @@ const ReasonsToJoin = () => {
                             <p>From cardio to functional and cycle. Separate area for boxing and mixed martial arts</p>
                         </div>
                     </div>
+
+                    {/* Fourth reason */}
                     <div className={styles.reason}>
                         <img src={icon2} alt="Ruler Icon" className={styles.icon} />
                         <div className={styles.text}>
